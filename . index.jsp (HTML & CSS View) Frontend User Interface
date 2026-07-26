@@ -1,0 +1,50 @@
+<%@ page import="java.util.List, com.devjobs.model.Job" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DevJobs Board - Java Full Stack</title>
+<style>
+body { font-family: Arial, sans-serif; background: #f4f6f9; margin: 0; padding: 0; color: #333; }
+header { background: #004aad; color: white; padding: 1rem 2rem; display: flex; justify-content:
+space-between; align-items: center; }
+.btn { background: #ff7f00; color: white; padding: 0.5rem 1rem; text-decoration: none; borderradius:
+4px; border: none; cursor: pointer; }
+.container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+.job-card { background: white; padding: 1.5rem; margin-bottom: 1rem; border-radius: 6px; boxshadow:
+0 2px 4px rgba(0,0,0,0.1); }
+.job-card h3 { margin-top: 0; color: #004aad; }
+.company { color: #666; font-size: 0.9rem; margin-bottom: 0.5rem; }
+</style>
+</head>
+<body>
+<header>
+<h1>DevJobs Board (Java JDBC)<h1>
+<a href="post.jsp" class="btn">Post a Job</a>
+</header>
+<main class="container">
+<h2>Available Positions</h2>
+<div class="job-list">
+<%
+List<Job> jobs = (List<Job>) request.getAttribute("jobs");
+if (jobs != null && !jobs.isEmpty()) {
+for (Job job : jobs) {
+%>
+<div class="job-card">
+<h3><%= job.getTitle() %></h3>
+<p class="company"><strong><%= job.getCompany() %></strong> — <span><%=
+job.getLocation() %></span></p>
+<p class="desc"><%= job.getDescription() %></p>
+</div>
+<% }
+} else {
+%>
+<p>No jobs posted yet.</p>
+<% } %>
+</div>
+</main>
+</body>
+</html>
+
+
+
