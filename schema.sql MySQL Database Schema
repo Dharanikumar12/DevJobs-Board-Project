@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS devjobs_db;
+USE devjobs_db;
+CREATE TABLE IF NOT EXISTS jobs (
+id INT AUTO_INCREMENT PRIMARY KEY,
+title VARCHAR(150) NOT NULL,
+company VARCHAR(150) NOT NULL,
+location VARCHAR(100) DEFAULT 'Remote',
+description TEXT,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+INSERT INTO jobs (title, company, location, description)
+VALUES ('Software Developer', 'Globalco', 'Hyderabad, India', 'Building scalable enterprise applications.');
